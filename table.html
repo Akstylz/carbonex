@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Responsive Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+    th{ 
+        color:#fff;
+            }
+</style>
+
+
+<table class="table table-striped">
+    <tr  class="bg-info">
+        <th>DATE</th>
+        <th>RHIS</th>
+        <th>Spread_Rate</th>
+		<th>Net_Rate</th>
+		<th>No_of_days</th>
+		<th>Interest_amt</th>
+    </tr>
+
+    <tbody id="myTable">
+        
+    </tbody>
+</table>
+
+<script>
+	var myArray = [
+        {
+            "DATE": "24-Jun-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "0",
+            "Interest_amt": "854418.49"
+        },
+        {
+            "DATE": "24-Jul-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "30",
+            "Interest_amt": "854418.49"
+        },
+        {
+            "DATE": "26-Aug-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "33",
+            "Interest_amt": "939860.34"
+        },
+        {
+            "DATE": "24-Sep-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "29",
+            "Interest_amt": "825937.88"
+        },
+        {
+            "DATE": "24-Oct-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "30",
+            "Interest_amt": "854418.49"
+        },
+        {
+            "DATE": "25-Nov-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "32",
+            "Interest_amt": "911379.73"
+        },
+        {
+            "DATE": "24-Dec-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "29",
+            "Interest_amt": "825937.88"
+        },
+        {
+            "DATE": "24-Jan-20",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "31",
+            "Interest_amt": "882899.11"
+        },
+        {
+            "DATE": "24-Feb-20",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "31",
+            "Interest_amt": "882899.11"
+        },
+        {
+            "DATE": "24-Mar-20",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "29",
+            "Interest_amt": "825937.88"
+        },
+        {
+            "DATE": "24-Apr-20",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "31",
+            "Interest_amt": "882899.11"
+        },
+        {
+            "DATE": "25-May-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "31",
+            "Interest_amt": "941501.85"
+        },
+        {
+            "DATE": "24-Jun-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "30",
+            "Interest_amt": "911130.82"
+        },
+        {
+            "DATE": "24-Jul-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "30",
+            "Interest_amt": "911130.82"
+        },
+        {
+            "DATE": "24-Aug-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "31",
+            "Interest_amt": "941501.85"
+        },
+        {
+            "DATE": "24-Sep-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "31",
+            "Interest_amt": "941501.85"
+        },
+        {
+            "DATE": "26-Oct-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "32",
+            "Interest_amt": "971872.88"
+        },
+        {
+            "DATE": "24-Nov-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "29",
+            "Interest_amt": "880759.79"
+        },
+        {
+            "DATE": "24-Dec-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "30",
+            "Interest_amt": "911130.82"
+        },
+        {
+            "DATE": "25-Jan-21",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "32",
+            "Interest_amt": "971872.88"
+        },
+        {
+            "DATE": "24-Feb-21",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "30",
+            "Interest_amt": "911130.82"
+        },
+        {
+            "DATE": "24-Mar-21",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "28",
+            "Interest_amt": "850388.77"
+        },
+        {
+            "DATE": "26-Apr-21",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "33",
+            "Interest_amt": "1002243.9"
+        },
+        {
+            "DATE": "24-May-21",
+            "RHIS": "9.75",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.7895",
+            "No_of_days": "28",
+            "Interest_amt": "863621.64"
+        },
+        {
+            "DATE": "24-Jun-21",
+            "RHIS": "9.75",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.7895",
+            "No_of_days": "31",
+            "Interest_amt": "956152.53"
+        }
+];
+	
+	// buildTable(myArray)
+
+	var storedData = sessionStorage.getItem("list_data_key");
+	var complexData ;
+if (storedData) {
+	complexData = JSON.parse(storedData);
+}
+buildTable(complexData)
+sessionStorage.clear();
+
+	function buildTable(data){
+		var table = document.getElementById('myTable')
+
+		for (var i = 0; i < data.length; i++){
+			var row = `<tr>
+							<td>${data[i].DATE}</td>
+							<td>${data[i].RHIS}</td>
+							<td>${data[i].Spread_Rate}</td>
+							<td>${data[i].Net_Rate}</td>
+							<td>${data[i].No_of_days}</td>
+							<td>${data[i].Interest_amt}</td>
+					  </tr>`
+			table.innerHTML += row
+
+
+		}
+	}
+
+</script>
+
+</body>
+</html>
